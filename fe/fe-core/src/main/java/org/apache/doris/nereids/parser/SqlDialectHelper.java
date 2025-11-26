@@ -45,7 +45,7 @@ public class SqlDialectHelper {
     public static String convertSqlByDialect(String originStmt, SessionVariable sessionVariable) {
         String convertedStmt = originStmt;
         @Nullable Dialect sqlDialect = Dialect.getByName(sessionVariable.getSqlDialect());
-        if (sqlDialect != null && sqlDialect != Dialect.DORIS) {
+        if (sqlDialect != null) {
             PluginMgr pluginMgr = Env.getCurrentEnv().getPluginMgr();
             List<DialectConverterPlugin> plugins = pluginMgr.getActiveDialectPluginList(sqlDialect);
             for (DialectConverterPlugin plugin : plugins) {
